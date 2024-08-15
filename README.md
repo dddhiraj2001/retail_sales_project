@@ -1,18 +1,25 @@
-Retail Sales Analysis SQL Project
-Project Overview
-Project Title: Retail Sales Analysis
+# **Retail Sales Analysis SQL Project**
+
+## **Project Overview**
+
+**Project Title**: *Retail Sales Analysis*
 
 In this project, I focused on demonstrating my SQL skills and techniques to explore, clean, and analyze retail sales data. The project involved setting up a retail sales database, conducting exploratory data analysis (EDA), and answering specific business questions through SQL queries.
 
-Objectives
-Database Setup: I established a retail sales database and populated it with the provided sales data.
-Data Cleaning: I identified and removed records with missing or null values.
-Exploratory Data Analysis (EDA): I conducted exploratory analysis to gain a deeper understanding of the dataset.
-Business Analysis: I used SQL queries to answer specific business questions and extract valuable insights from the sales data.
-Project Structure
-1. Database Setup
-Database Creation: I started by creating a database named retail_sales.
-Table Creation: I created a table named retail_sales to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
+## **Objectives**
+
+- **Database Setup**: I established a retail sales database and populated it with the provided sales data.
+- **Data Cleaning**: I identified and removed records with missing or null values.
+- **Exploratory Data Analysis (EDA)**: I conducted exploratory analysis to gain a deeper understanding of the dataset.
+- **Business Analysis**: I used SQL queries to answer specific business questions and extract valuable insights from the sales data.
+
+## **Project Structure**
+
+### **1. Database Setup**
+
+- **Database Creation**: I started by creating a database named `retail_sales`.
+- **Table Creation**: I created a table named `retail_sales` to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
+
 CREATE DATABASE retail_sales;
 
 CREATE TABLE retail_sales
