@@ -20,6 +20,7 @@ In this project, I focused on demonstrating my SQL skills and techniques to expl
 - **Database Creation**: I started by creating a database named `retail_sales`.
 - **Table Creation**: I created a table named `retail_sales` to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
+```sql
 CREATE DATABASE retail_sales;
 
 CREATE TABLE retail_sales
@@ -36,11 +37,13 @@ CREATE TABLE retail_sales
     cogs FLOAT,
     total_sale FLOAT
 );
-2. Data Exploration & Cleaning
-Record Count: I determined the total number of records in the dataset.
-Customer Count: I identified the number of unique customers in the dataset.
-Category Count: I listed all unique product categories in the dataset.
-Null Value Check: I checked for any null values and removed the records containing them.
+```
+### 2. Data Exploration & Cleaning
+**Record Count**: I determined the total number of records in the dataset.
+**Customer Count**: I identified the number of unique customers in the dataset.
+**Category Count**: I listed all unique product categories in the dataset.
+**Null Value Check**: I checked for any null values and removed the records containing them.
+```sql
 SELECT COUNT(*) FROM retail_sales;
 SELECT COUNT(DISTINCT customer_id) FROM retail_sales;
 SELECT DISTINCT category FROM retail_sales;
@@ -56,15 +59,19 @@ WHERE
     sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
     gender IS NULL OR age IS NULL OR category IS NULL OR 
     quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
-3. Data Analysis & Insights
+```
+### 3. Data Analysis & Findings
 I developed the following SQL queries to answer specific business questions:
 
-Retrieve all sales made on '2022-11-05':
+**Retrieve all sales made on '2022-11-05'**:
+```sql
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
+```
 
-Retrieve all transactions in November 2022 where the category is 'Clothing' and the quantity sold exceeds 4:
+**Retrieve all transactions in November 2022 where the category is 'Clothing' and the quantity sold exceeds 4**:
+```sql
 SELECT 
   *
 FROM retail_sales
@@ -74,14 +81,18 @@ WHERE
     TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
     AND
     quantity >= 4
-Calculate total sales (total_sale) for each category:
+```
+**Calculate total sales (total_sale) for each category**:
+```sql
 SELECT 
     category,
     SUM(total_sale) as net_sale,
     COUNT(*) as total_orders
 FROM retail_sales
 GROUP BY 1
-Find the average age of customers who purchased items from the 'Beauty' category:
+```
+**Find the average age of customers who purchased items from the 'Beauty' category**:
+```sql
 SELECT
     ROUND(AVG(age), 2) as avg_age
 FROM retail_sales
@@ -90,8 +101,10 @@ WHERE category = 'Beauty'
 Retrieve transactions where the total_sale exceeds 1000:
 SELECT * FROM retail_sales
 WHERE total_sale > 1000
+```
 
-Calculate the total number of transactions by each gender for each category:
+**Calculate the total number of transactions by each gender for each category**:
+```sql
 SELECT 
     category,
     gender,
@@ -102,8 +115,10 @@ GROUP
     category,
     gender
 ORDER BY 1
+```
 
-Calculate the average sales for each month and identify the best-selling month each year:
+**Calculate the average sales for each month and identify the best-selling month each year**:
+```sql
 SELECT 
        year,
        month,
@@ -119,8 +134,9 @@ FROM retail_sales
 GROUP BY 1, 2
 ) as t1
 WHERE rank = 1
-
-Identify the top 5 customers based on the highest total sales:
+```
+**Identify the top 5 customers based on the highest total sales**:
+```sql
 SELECT 
     customer_id,
     SUM(total_sale) as total_sales
@@ -128,15 +144,19 @@ FROM retail_sales
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 5
+```
 
-Count the number of unique customers who purchased items from each category:
+**Count the number of unique customers who purchased items from each category**:
+```sql
 SELECT 
     category,    
     COUNT(DISTINCT customer_id) as cnt_unique_cs
 FROM retail_sales
 GROUP BY category
+```
 
-Classify sales into shifts (Morning <12, Afternoon 12-17, Evening >17) and count the number of orders for each shift:
+**Classify sales into shifts (Morning <12, Afternoon 12-17, Evening >17) and count the number of orders for each shift**:
+```sql
 WITH hourly_sale
 AS
 (
@@ -153,6 +173,7 @@ SELECT
     COUNT(*) as total_orders    
 FROM hourly_sale
 GROUP BY shift
+```
 
 ## **Findings**
 **Customer Demographics**: The dataset includes customers from various age groups, with sales distributed across different categories such as Clothing and Beauty.
